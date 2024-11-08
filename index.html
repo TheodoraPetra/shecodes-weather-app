@@ -20,24 +20,28 @@
           type="text"
           id="search-box"
           placeholder="Enter a city.."
+          required
           name="city"
           class="city-input"
         />
         <input type="submit" value="Search" class="search-button" />
       </form>
       <header>
-        <h1 id="city-title">Oslo</h1>
-        <section class="daily-details">
-          <p>
-            <span id="current-time"></span>,
-            <br />
-            Humidity: <strong>91%</strong>
-            <br />
-            Wind: <strong>3.58km/h</strong>
-          </p>
-        </section>
-        <h2 id="city-temperature">13</h2>
-        <span>°C</span>
+        <div>
+          <h1 id="city-title">Oslo</h1>
+          <section class="daily-details">
+            <p>
+              <span id="current-time">Tuesday 14:49</span>,
+              <br />
+              Humidity: <strong>91%</strong>
+              <br />
+              Wind: <strong>3.58km/h</strong>
+            </p>
+          </section>
+        </div>
+        <div>
+          <h2 id="city-temperature">13°C</h2>
+        </div>
         <ul>
           <li class="day-section">
             Sun ☀️
