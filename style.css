@@ -20,6 +20,11 @@ a {
   border-radius: 10px;
   padding: 30px;
 }
+.weather-app-main {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
 
 .search-button {
   margin-left: 5px;
@@ -39,4 +44,29 @@ a {
   padding: 15px;
   width: 75%;
   border-radius: 6px;
+}
+
+#city-title {
+  margin: 20px 0 10px;
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 48px;
+}
+#city-temperature {
+  display: flex;
+  margin: 20px 0 10px;
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 48px;
+}
+
+.daily-details {
+  font-size: 16px;
+  color: rgba(39, 33, 66, 0.4);
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.daily-details strong {
+  color: #ffcab0;
 }
