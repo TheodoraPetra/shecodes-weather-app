@@ -1,14 +1,17 @@
 let apiKey = "064bdaa5f4b41a48e6cta92391004o0f";
 
 function displayTemperature(response) {
-  let cityTemperature = document.querySelector(".weather-value");
+  let cityTemperature = document.querySelector("#weather-value");
   let condition = document.querySelector("#condition");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
+  let iconElement = document.querySelector("#weather-icon");
+  let iconUrl = response.data.condition.icon_url;
   cityTemperature.innerHTML = Math.round(response.data.temperature.current);
   condition.innerHTML = response.data.condition.description;
   humidity.innerHTML = response.data.temperature.humidity + " %";
   wind.innerHTML = Math.round(response.data.wind.speed) + " km/h";
+  iconElement.innerHTML = `<img src="${iconUrl}" alt="Weather icon" />`;
 }
 
 function changeCity(event) {
