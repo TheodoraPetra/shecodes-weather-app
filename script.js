@@ -47,3 +47,11 @@ function formatDate() {
     String(myDate.getMinutes()).padStart(2, "0");
 }
 formatDate();
+
+function loadDefaultCity(city) {
+  let cityTitle = document.querySelector("#city-title");
+  cityTitle.innerHTML = city;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+loadDefaultCity("Paris");
