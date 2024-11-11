@@ -72,6 +72,13 @@ a {
   margin-top: 5px;
 }
 
+.forecast {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  list-style-type: none;
+}
+
 .daily-details {
   font-size: 16px;
   color: rgba(39, 33, 66, 0.4);
