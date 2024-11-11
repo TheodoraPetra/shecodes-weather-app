@@ -55,9 +55,21 @@ a {
 #city-temperature {
   display: flex;
   margin: 20px 0 10px;
-  font-size: 38px;
   font-weight: 500;
   line-height: 48px;
+}
+.weather-value {
+  font-size: 60px;
+}
+.weather-unit {
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.weather-icon {
+  font-size: 44px;
+  margin-top: 5px;
 }
 
 .daily-details {

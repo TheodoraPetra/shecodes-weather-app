@@ -1,7 +1,7 @@
 let apiKey = "064bdaa5f4b41a48e6cta92391004o0f";
 
 function displayTemperature(response) {
-  let cityTemperature = document.querySelector("#city-temperature");
+  let cityTemperature = document.querySelector(".weather-value");
   cityTemperature.innerHTML = Math.round(response.data.temperature.current);
 }
 
