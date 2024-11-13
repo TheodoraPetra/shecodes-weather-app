@@ -55,3 +55,24 @@ function loadDefaultCity(city) {
   axios.get(apiUrl).then(displayTemperature);
 }
 loadDefaultCity("Paris");
+
+function displayForecast() {
+  let forecast = document.querySelector(".forecast");
+
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `<li class="day-section">
+     <div class="forecast-day">${day}</div>
+     <div class="forecast-icon">☀️</div>
+     <div class="forecast-temperature">
+       <strong>14°C</strong> - 18°C
+     </div>
+   </li>`;
+  });
+  forecast.innerHTML = forecastHtml;
+}
+displayForecast();
