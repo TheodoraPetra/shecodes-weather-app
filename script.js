@@ -56,7 +56,14 @@ function loadDefaultCity(city) {
 }
 loadDefaultCity("Paris");
 
-function displayForecast() {
+function getForecastData(city) {
+  let apiKey = "064bdaa5f4b41a48e6cta92391004o0f";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
   let forecast = document.querySelector(".forecast");
 
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -75,4 +82,5 @@ function displayForecast() {
   });
   forecast.innerHTML = forecastHtml;
 }
-displayForecast();
+
+getForecastData();
