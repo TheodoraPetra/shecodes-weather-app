@@ -8,12 +8,14 @@ function displayTemperature(response) {
   let wind = document.querySelector("#wind");
   let iconElement = document.querySelector("#weather-icon");
   let iconUrl = response.data.condition.icon_url;
+  let cityTime = response.data.time;
   cityTitle.innerHTML = response.data.city;
   cityTemperature.innerHTML = Math.round(response.data.temperature.current);
   condition.innerHTML = response.data.condition.description;
   humidity.innerHTML = response.data.temperature.humidity + " %";
   wind.innerHTML = Math.round(response.data.wind.speed) + " km/h";
   iconElement.innerHTML = `<img src="${iconUrl}" alt="Weather icon" />`;
+  formatDate(cityTime);
   getForecastData(response.data.city);
 }
 
@@ -27,7 +29,7 @@ function fetchCity(event) {
 let form = document.querySelector("#form");
 form.addEventListener("submit", fetchCity);
 
-function formatDate() {
+function formatDate(cityTimestamp) {
   let currentTime = document.querySelector("#current-time");
   let daysOfTheWeek = [
     "Sunday",
@@ -38,16 +40,12 @@ function formatDate() {
     "Friday",
     "Saturday",
   ];
-  let myDate = new Date();
-  let dayOfTheWeek = daysOfTheWeek[myDate.getDay()];
-  currentTime.innerHTML =
-    dayOfTheWeek +
-    " " +
-    myDate.getHours() +
-    ":" +
-    String(myDate.getMinutes()).padStart(2, "0");
+  let cityDate = new Date(cityTimestamp * 1000);
+  let dayOfTheWeek = daysOfTheWeek[cityDate.getDay()];
+  let hours = cityDate.getHours();
+  let minutes = String(cityDate.getMinutes()).padStart(2, "0");
+  currentTime.innerHTML = `${dayOfTheWeek} ${hours}:${minutes}`;
 }
-formatDate();
 
 function loadDefaultCity(city) {
   let cityTitle = document.querySelector("#city-title");
