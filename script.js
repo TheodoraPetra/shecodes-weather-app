@@ -57,6 +57,12 @@ function loadDefaultCity(city) {
 }
 loadDefaultCity("Paris");
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
+}
+
 function getForecastData(city) {
   let apiKey = "064bdaa5f4b41a48e6cta92391004o0f";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
@@ -67,21 +73,22 @@ function displayForecast(response) {
   console.log(response.data.daily);
   let forecast = document.querySelector(".forecast");
 
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = "";
 
-  response.data.daily.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `<li class="day-section">
-     <div class="forecast-day">Tue</div>
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `<li class="day-section">
+     <div class="forecast-day">${formatDay(day.time)}</div>
      <div class="forecast-icon"><img src=${day.condition.icon_url}></div>
      <div class="forecast-temperature">
        <strong>${Math.round(day.temperature.maximum)}°</strong> ${Math.round(
-        day.temperature.minimum
-      )}°
+          day.temperature.minimum
+        )}°
      </div>
    </li>`;
+    }
   });
   forecast.innerHTML = forecastHtml;
 }
