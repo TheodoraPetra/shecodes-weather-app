@@ -14,6 +14,7 @@ function displayTemperature(response) {
   humidity.innerHTML = response.data.temperature.humidity + " %";
   wind.innerHTML = Math.round(response.data.wind.speed) + " km/h";
   iconElement.innerHTML = `<img src="${iconUrl}" alt="Weather icon" />`;
+  getForecastData(response.data.city);
 }
 
 function fetchCity(event) {
@@ -63,24 +64,26 @@ function getForecastData(city) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
+  console.log(response.data.daily);
   let forecast = document.querySelector(".forecast");
 
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day) {
     forecastHtml =
       forecastHtml +
       `<li class="day-section">
-     <div class="forecast-day">${day}</div>
-     <div class="forecast-icon">☀️</div>
+     <div class="forecast-day">Tue</div>
+     <div class="forecast-icon"><img src=${day.condition.icon_url}></div>
      <div class="forecast-temperature">
-       <strong>14°C</strong> - 18°C
+       <strong>${Math.round(day.temperature.maximum)}°</strong> ${Math.round(
+        day.temperature.minimum
+      )}°
      </div>
    </li>`;
   });
   forecast.innerHTML = forecastHtml;
 }
 
-getForecastData();
+getForecastData("Paris");
